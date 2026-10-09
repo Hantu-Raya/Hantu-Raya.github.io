@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowUpRight, Code, EnvelopeSimple, GithubLogo } from "@phosphor-icons/react";
 import { CONTACT_EMAIL, GITHUB_URL, NATIVUNE, SKILLS, WEB_TOOLS } from "./content.js";
 import { THEMES, applyTheme, readTheme } from "./theme.js";
+import UpdateNotice from "./UpdateNotice.jsx";
 
 const [FEATURED, ...PAIR] = WEB_TOOLS;
 
@@ -262,6 +263,7 @@ export default function App() {
           <p>© 2026 Hantu-Raya. Built with React and Vite.</p>
         </div>
       </footer>
+      <UpdateNotice />
     </>
   );
 }

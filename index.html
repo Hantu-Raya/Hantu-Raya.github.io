@@ -37,6 +37,49 @@
         }
       })();
     </script>
+    <script>
+      // Stale-page guard. Runs before the app, so it also works when an old cached
+      // index.html points at scripts that no longer exist (the white-screen case).
+      // It reloads once with a cache-busting ?r= parameter; a sessionStorage stamp stops loops.
+      (function () {
+        var KEY = "stale-reload-at";
+        var url = new URL(location.href);
+        if (url.searchParams.has("r")) {
+          url.searchParams.delete("r");
+          history.replaceState(null, "", url.pathname + url.search + url.hash);
+        }
+        window.__reloadFresh = function (guarded) {
+          if (guarded) {
+            try {
+              if (Date.now() - Number(sessionStorage.getItem(KEY) || 0) < 60000) return false;
+              sessionStorage.setItem(KEY, String(Date.now()));
+            } catch (e) {
+              return false;
+            }
+          }
+          var fresh = new URL(location.href);
+          fresh.searchParams.set("r", Date.now().toString(36));
+          location.replace(fresh.href);
+          return true;
+        };
+        addEventListener(
+          "error",
+          function (e) {
+            var t = e.target;
+            if (t && (t.tagName === "SCRIPT" || (t.tagName === "LINK" && t.rel === "stylesheet"))) {
+              window.__reloadFresh(true);
+            }
+          },
+          true
+        );
+        addEventListener("load", function () {
+          setTimeout(function () {
+            var root = document.getElementById("root");
+            if (root && !root.hasChildNodes()) window.__reloadFresh(true);
+          }, 4000);
+        });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
