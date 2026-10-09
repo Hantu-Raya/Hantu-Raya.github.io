@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Code, EnvelopeSimple, GithubLogo } from "@phosphor-icons/react";
-import { CONTACT_EMAIL, GITHUB_URL, NATIVUNE, SHOWREEL, SKILLS, WEB_TOOLS } from "./content.js";
+import { CONTACT_EMAIL, GITHUB_URL, NATIVUNE, SKILLS, WEB_TOOLS } from "./content.js";
 import { THEMES, applyTheme, readTheme } from "./theme.js";
-import Showreel from "./Showreel.jsx";
+import ToolMedia from "./ToolMedia.jsx";
 import UpdateNotice from "./UpdateNotice.jsx";
 
 const [FEATURED, ...PAIR] = WEB_TOOLS;
@@ -148,21 +148,15 @@ function WebTools() {
         </p>
       </div>
 
-      <Showreel reel={SHOWREEL} />
-
       <article className="tool tool-featured" aria-labelledby={`${FEATURED.id}-title`}>
-        <div className="frame">
-          <Shot image={FEATURED.image} />
-        </div>
+        <ToolMedia name={FEATURED.name} image={FEATURED.image} video={FEATURED.video} />
         <ToolDetails tool={FEATURED} />
       </article>
 
       <div className="tool-pair">
         {PAIR.map((tool) => (
           <article key={tool.id} className="tool" aria-labelledby={`${tool.id}-title`}>
-            <div className="frame">
-              <Shot image={tool.image} />
-            </div>
+            <ToolMedia name={tool.name} image={tool.image} video={tool.video} />
             <ToolDetails tool={tool} />
           </article>
         ))}

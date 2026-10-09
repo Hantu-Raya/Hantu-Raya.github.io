@@ -4,16 +4,6 @@ export const CONTACT_EMAIL = "roslizaqwan@gmail.com";
 
 export const GITHUB_URL = "https://github.com/Hantu-Raya";
 
-export const SHOWREEL = {
-  src: "reel/web-tools-reel.mp4",
-  poster: "reel/web-tools-reel-poster.webp",
-  width: 1280,
-  height: 720,
-  label:
-    "Silent walkthrough of the three web tools: compressing a video toward a target size, cropping and flipping a photo, and batch converting images to WebP.",
-  caption: "A 27-second walkthrough recorded on the live tools.",
-};
-
 export const WEB_TOOLS = [
   {
     id: "video-compressor",
@@ -25,11 +15,12 @@ export const WEB_TOOLS = [
     tech: ["React", "TypeScript", "Astro", "WebCodecs (Mediabunny)", "FFmpeg.wasm"],
     demo: "https://hantu-raya.github.io/Web-tools/video-compressor/dist/",
     source: "https://github.com/Hantu-Raya/Web-tools/tree/main/video-compressor",
+    video: "clips/video-compressor.mp4",
     image: {
       src: "shots/video-compressor.webp",
       width: 1600,
-      height: 1000,
-      alt: "Video Compressor with a landscape clip loaded: a video preview, a trim timeline split into two segments, and a target output of 0.9 MB.",
+      height: 900,
+      alt: "Video Compressor with a landscape clip loaded: a video preview, a trim timeline split into two segments, and a target output of 0.7 MB.",
     },
   },
   {
@@ -42,10 +33,11 @@ export const WEB_TOOLS = [
     tech: ["HTML", "CSS", "JavaScript", "Cropper.js"],
     demo: "https://hantu-raya.github.io/Web-tools/crop/",
     source: "https://github.com/Hantu-Raya/Web-tools/tree/main/crop",
+    video: "clips/quick-crop.mp4",
     image: {
       src: "shots/quick-crop.webp",
       width: 1600,
-      height: 1000,
+      height: 900,
       alt: "Quick Crop with a fjord photo loaded, a crop box drawn over the middle and the cropped result in the live preview panel.",
     },
   },
@@ -59,10 +51,11 @@ export const WEB_TOOLS = [
     tech: ["HTML", "CSS", "JavaScript", "Canvas API"],
     demo: "https://hantu-raya.github.io/Web-tools/Img-converter/",
     source: "https://github.com/Hantu-Raya/Web-tools/tree/main/Img-converter",
+    video: "clips/image-converter.mp4",
     image: {
       src: "shots/image-converter.webp",
       width: 1600,
-      height: 1000,
+      height: 900,
       alt: "Image Converter with three landscape photos queued and the convert-all format set to WebP.",
     },
   },
