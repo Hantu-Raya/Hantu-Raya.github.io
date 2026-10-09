@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="panorama">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hantu-Raya | Frontend developer</title>
+    <meta
+      name="description"
+      content="Frontend developer building practical web tools with HTML, CSS and JavaScript. Open to part-time remote and project-based work."
+    />
+    <meta name="theme-color" content="#121410" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://hantu-raya.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hantu-raya.github.io/" />
+    <meta property="og:title" content="Hantu-Raya | Frontend developer" />
+    <meta
+      property="og:description"
+      content="Practical web tools built with HTML, CSS and JavaScript: Video Compressor, Quick Crop and Image Converter."
+    />
+    <meta property="og:image" content="https://hantu-raya.github.io/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Hantu-Raya portfolio: name, introduction and screenshots of the Video Compressor and Quick Crop." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Apply the saved theme before first paint. Ids must match src/theme.js.
+      (function () {
+        var ids = { workbench: "#f5f5f4", compact: "#202020", panorama: "#121410" };
+        var t = new URLSearchParams(location.search).get("theme");
+        if (!ids[t]) {
+          try { t = localStorage.getItem("theme"); } catch (e) { t = null; }
+        }
+        if (ids[t]) {
+          document.documentElement.dataset.theme = t;
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", ids[t]);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        This page needs JavaScript. My projects are on
+        <a href="https://github.com/Hantu-Raya">GitHub</a>.
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
