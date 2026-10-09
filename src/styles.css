@@ -547,6 +547,48 @@ main:focus {
   margin-top: 12px;
 }
 
+/* Showreel */
+
+.showreel {
+  margin: 0 0 clamp(48px, 7vw, 88px);
+}
+
+.showreel-frame video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--band);
+}
+
+.showreel-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  color: var(--ink);
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+.showreel-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.showreel figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
 /* Nativune */
 
 .section-band {

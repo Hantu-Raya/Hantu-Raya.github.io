@@ -4,6 +4,16 @@ export const CONTACT_EMAIL = "roslizaqwan@gmail.com";
 
 export const GITHUB_URL = "https://github.com/Hantu-Raya";
 
+export const SHOWREEL = {
+  src: "reel/web-tools-reel.mp4",
+  poster: "reel/web-tools-reel-poster.webp",
+  width: 1280,
+  height: 720,
+  label:
+    "Silent walkthrough of the three web tools: compressing a video toward a target size, cropping and flipping a photo, and batch converting images to WebP.",
+  caption: "A 27-second walkthrough recorded on the live tools.",
+};
+
 export const WEB_TOOLS = [
   {
     id: "video-compressor",
