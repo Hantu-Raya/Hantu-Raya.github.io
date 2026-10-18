@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Code, DownloadSimple, EnvelopeSimple, GitFork, GithubLogo, GitPullRequest, Heart, SpeakerHigh } from "@phosphor-icons/react";
-import { CONTACT_EMAIL, GAMEBANANA, GITHUB_URL, MODS, NATIVUNE, OPEN_SOURCE, SKILLS, UPCOMING, WEB_TOOLS } from "./content.js";
+import {
+  CONTACT_EMAIL,
+  GAMEBANANA,
+  GITHUB_URL,
+  MODS,
+  NATIVUNE,
+  OPEN_SOURCE,
+  OPEN_SOURCE_SECTION,
+  SKILLS,
+  UPCOMING,
+  UPCOMING_SECTION,
+  WEB_TOOLS,
+} from "./content.js";
 import { THEMES, applyTheme, readTheme } from "./theme.js";
 import ToolMedia from "./ToolMedia.jsx";
 import UpdateNotice from "./UpdateNotice.jsx";
@@ -216,18 +228,15 @@ function Mods() {
   return (
     <section id="mods" className="section container" aria-labelledby="mods-title">
       <div className="section-head">
-        <h2 id="mods-title">Deadlock mods</h2>
-        <p>
-          {GAMEBANANA.count} HUD, quality of life and sound mods for Deadlock, downloaded{" "}
-          {compactCount.format(GAMEBANANA.totalDownloads)} times on GameBanana.
-        </p>
-        <p className="stats-note">Stats as of {GAMEBANANA.statsDate}.</p>
+        <h2 id="mods-title">{GAMEBANANA.title}</h2>
+        <p>{GAMEBANANA.intro(GAMEBANANA.count, compactCount.format(GAMEBANANA.totalDownloads))}</p>
+        <p className="stats-note">{GAMEBANANA.statsNote(GAMEBANANA.statsDate)}</p>
         <div className="actions">
           <ExternalLink href={GAMEBANANA.profile} variant="primary">
-            View on GameBanana
+            {GAMEBANANA.profileLabel}
           </ExternalLink>
           <ExternalLink href={GAMEBANANA.collection} icon={GithubLogo}>
-            Source
+            {GAMEBANANA.collectionLabel}
           </ExternalLink>
         </div>
       </div>
@@ -254,14 +263,16 @@ function Mods() {
                 <li>
                   <DownloadSimple aria-hidden="true" weight="bold" />
                   {compactCount.format(mod.downloads)}
-                  <span className="visually-hidden"> downloads</span>
+                  <span className="visually-hidden"> {GAMEBANANA.downloadsLabel}</span>
                 </li>
                 <li>
                   <Heart aria-hidden="true" weight="bold" />
                   {compactCount.format(mod.likes)}
-                  <span className="visually-hidden"> likes</span>
+                  <span className="visually-hidden"> {GAMEBANANA.likesLabel}</span>
                 </li>
-                <li>Updated {formatUpdated(mod.updated)}</li>
+                <li>
+                  {GAMEBANANA.updatedLabel} {formatUpdated(mod.updated)}
+                </li>
               </ul>
             </div>
           </article>
@@ -276,8 +287,8 @@ function OpenSource() {
     <section id="open-source" className="section section-band" aria-labelledby="open-source-title">
       <div className="container">
         <div className="section-head">
-          <h2 id="open-source-title">Open source</h2>
-          <p>Forks I maintain and changes I sent upstream.</p>
+          <h2 id="open-source-title">{OPEN_SOURCE_SECTION.title}</h2>
+          <p>{OPEN_SOURCE_SECTION.intro}</p>
         </div>
         <div className="card-grid">
           {OPEN_SOURCE.map((item) => {
@@ -293,7 +304,7 @@ function OpenSource() {
                 </div>
                 <h3>{item.name}</h3>
                 <p className="os-upstream">
-                  {item.kind === "Contribution" ? "To" : "Based on"}{" "}
+                  {item.kind === "Contribution" ? OPEN_SOURCE_SECTION.contributedToLabel : OPEN_SOURCE_SECTION.basedOnLabel}{" "}
                   <a href={item.upstream.url} target="_blank" rel="noopener noreferrer">
                     {item.upstream.name}
                     <span className="visually-hidden"> (opens in a new tab)</span>
@@ -321,7 +332,7 @@ function Upcoming() {
   return (
     <section id="upcoming" className="section container" aria-labelledby="upcoming-title">
       <div className="section-head">
-        <h2 id="upcoming-title">In development</h2>
+        <h2 id="upcoming-title">{UPCOMING_SECTION.title}</h2>
       </div>
       <div className="upcoming-list">
         {UPCOMING.map((item) => (
@@ -334,7 +345,7 @@ function Upcoming() {
             <p>{item.summary}</p>
             <div className="upcoming-lists">
               <div>
-                <h4 className="detail-label">Working now</h4>
+                <h4 className="detail-label">{UPCOMING_SECTION.pointsLabel}</h4>
                 <ul className="points">
                   {item.points.map((point) => (
                     <li key={point}>{point}</li>
@@ -342,7 +353,7 @@ function Upcoming() {
                 </ul>
               </div>
               <div>
-                <h4 className="detail-label">Planned</h4>
+                <h4 className="detail-label">{UPCOMING_SECTION.plannedLabel}</h4>
                 <ul className="points">
                   {item.planned.map((point) => (
                     <li key={point}>{point}</li>

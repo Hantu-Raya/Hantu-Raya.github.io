@@ -105,7 +105,17 @@ export const SKILLS = [
 ];
 
 // Deadlock mods on GameBanana. Totals are as of the stats date.
+// `intro` receives the formatted count and download total.
 export const GAMEBANANA = {
+  title: "Deadlock mods",
+  intro: (count, downloads) =>
+    `${count} HUD, quality of life and sound mods for Deadlock, downloaded ${downloads} times on GameBanana.`,
+  statsNote: (date) => `Stats as of ${date}.`,
+  profileLabel: "View on GameBanana",
+  collectionLabel: "Source",
+  updatedLabel: "Updated",
+  downloadsLabel: "downloads",
+  likesLabel: "likes",
   profile: "https://gamebanana.com/members/4577138",
   collection: "https://github.com/Hantu-Raya/Deadlock-mods-collection",
   statsDate: "18 October 2026",
@@ -342,6 +352,14 @@ export const MODS = [
   },
 ];
 
+// Heading and labels for the Open source section.
+export const OPEN_SOURCE_SECTION = {
+  title: "Open source",
+  intro: "Forks I maintain and changes I sent upstream.",
+  basedOnLabel: "Based on",
+  contributedToLabel: "To",
+};
+
 // Forks, adaptations and contributions that were merged or submitted upstream.
 export const OPEN_SOURCE = [
   {
@@ -417,6 +435,13 @@ export const OPEN_SOURCE = [
     links: [{ label: "Pull request", href: "https://github.com/microsoft/winget-pkgs/pull/442614" }],
   },
 ];
+
+// Heading and labels for the In development section.
+export const UPCOMING_SECTION = {
+  title: "In development",
+  pointsLabel: "Working now",
+  plannedLabel: "Planned",
+};
 
 // Not public yet. No download link.
 export const UPCOMING = [
